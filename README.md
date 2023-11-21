@@ -12,8 +12,8 @@ This project is a Flask project with a Restful API, using SQLAlchemy to connect 
   - [Cloning the Project](#cloning-the-project)
   - [Prerequisites](#prerequisites---setting-up-a-virtual-environment)
   - [Installation](#installation---installing-requirements)
-- [Usage](#usage)
 - [Grab Data](#grab-data)
+- [Usage](#Usage---running-the-project)
 - [Rest APIs](#rest-apis)
 
 ## Getting Started
@@ -70,7 +70,24 @@ Note: It's a good practice to activate the virtual environment every time you wo
 
     deactivate
 
-## Usage
+## Grab data
+This project also creates the SQlite database by grabbing the data from the crawled websites. To grab the data from the crawled websites, run the following command:
+
+### Create database by:
+
+    flask db upgrade
+
+#### Add sites by:
+
+    python add_sites_info.py
+
+### Add `ZIENGS` website crawled data by:
+
+    python grab_and_save_date_from_ziengs_site.py <ziengs_crawl_input_file_path>
+
+Take a coffee break, it takes a while(around 5 minutes) to grab and save the data from the crawled websites.
+
+## Usage - Running the Project
 To run the project, run the following command:
 
     Flask run
@@ -78,42 +95,30 @@ To run the project, run the following command:
 You can access the project via http://127.0.0.1:5000, which opens the home page of the project.
 
 
-## Grab data
-This project also creates the SQlite database by grabbing the data from the crawled websites. To grab the data from the crawled websites, run the following command:
-
-### Create database by:
-
-    flask db init
-    flask db migrate -m "initial migration""
-    flask db upgrade
-
-#### Add sites by:
-
-    python add_sites.py
-
-### Add `ZIENGS` website crawled data by:
-
-    python grab_and_save_date_from_ziengs_site.py <crawl_input_file_path>
-
 ## Rest APIs
 
 The following REST API endpoints are available for interacting with the project's data:
     
-    /api/sites
+Indexed sites --> http://127.0.0.1:5000/api/sites
     
 Purpose: This endpoint provides access to information about different sites or competitors.
 
-    /api/brands
+Indexed brands --> http://127.0.0.1:5000/api/sites/api/brands
+
 Purpose: This endpoint allows users to retrieve information about brands within the Dutch shoe retail market.
     
-    /api/categories
+Indexed product categories --> http://127.0.0.1:5000/api/sites/api/categories
+
 Purpose: This endpoint provides data related to product categories.
     
-    /api/product_types
+Indexed product types --> http://127.0.0.1:5000/api/sites/api/product_types
+
 Purpose: This endpoint offers information about different types of products.
     
-    /api/brands/<int:brand_id>/products
+Brand related products --> http://127.0.0.1:5000/api/sites/api/brands/<int:brand_id>/products
+
 Purpose: This endpoint allows users to retrieve products associated with a specific brand using the brand_id parameter.
 
-    /api/products/<int:product_id>
+Product detail --> http://127.0.0.1:5000/api/sites/api/products/<int:product_id>
+
 Purpose: This endpoint provides detailed information about a specific product identified by the product_id parameter.
