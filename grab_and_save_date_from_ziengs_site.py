@@ -1,3 +1,4 @@
+import argparse
 import html
 import json
 import time
@@ -166,5 +167,11 @@ def add_product_info_to_db(product_info, site: Site, progress_bar_info):
 
 # Add specific data here
 if __name__ == '__main__':
-    crawl_input_file = "/Users/jyothi/Desktop/jyothi/N/20160530_nelson_mini_project_crawls/crawl_ziengs.nl_2016-05-30T23-15-20.jl"
-    grab_and_save_data_from_ziengs_site(crawl_input_file)
+    # Initialize the argument parser
+    parser = argparse.ArgumentParser(description="Process the crawl input file.")
+    # Add the crawl_input_file argument
+    parser.add_argument('crawl_input_file_path', type=str, help='Path to the crawl input file')
+    # Parse the arguments
+    args = parser.parse_args()
+    # Use the crawl_input_file argument
+    grab_and_save_data_from_ziengs_site(args.crawl_input_file_path)
