@@ -52,4 +52,4 @@ if __name__ == '__main__':
     parser.add_argument('omoda_crawl_input_file_path', type=str, help='Path to the crawl input file')
     # Parse the arguments
     args = parser.parse_args()
-    grab_and_save_data_from_ziengs_site(file_path=args.omoda_crawl_input_file_path)
+    grab_and_save_data_from_omoda_site(file_path=args.omoda_crawl_input_file_path)
