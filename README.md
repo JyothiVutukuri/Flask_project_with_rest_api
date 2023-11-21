@@ -103,22 +103,22 @@ Indexed sites --> http://127.0.0.1:5000/api/sites
     
 Purpose: This endpoint provides access to information about different sites or competitors.
 
-Indexed brands --> http://127.0.0.1:5000/api/sites/api/brands
+Indexed brands --> http://127.0.0.1:5000/api/brands
 
 Purpose: This endpoint allows users to retrieve information about brands within the Dutch shoe retail market.
     
-Indexed product categories --> http://127.0.0.1:5000/api/sites/api/categories
+Indexed product categories --> http://127.0.0.1:5000/api/categories
 
 Purpose: This endpoint provides data related to product categories.
     
-Indexed product types --> http://127.0.0.1:5000/api/sites/api/product_types
+Indexed product types --> http://127.0.0.1:5000/api/product_types
 
 Purpose: This endpoint offers information about different types of products.
     
-Brand related products --> http://127.0.0.1:5000/api/sites/api/brands/<int:brand_id>/products
+Brand related products --> http://127.0.0.1:5000/api/brands/<int:brand_id>/products
 
 Purpose: This endpoint allows users to retrieve products associated with a specific brand using the brand_id parameter.
 
-Product detail --> http://127.0.0.1:5000/api/sites/api/products/<int:product_id>
+Product detail --> http://127.0.0.1:5000/api/products/<int:product_id>
 
 Purpose: This endpoint provides detailed information about a specific product identified by the product_id parameter.
