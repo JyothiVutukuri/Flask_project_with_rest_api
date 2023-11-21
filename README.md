@@ -70,7 +70,7 @@ Note: It's a good practice to activate the virtual environment every time you wo
 
     deactivate
 
-## Usage <a name="usage"></a>
+## Usage
 To run the project, run the following command:
 
     Flask run
@@ -78,7 +78,7 @@ To run the project, run the following command:
 You can access the project via http://127.0.0.1:5000, which opens the home page of the project.
 
 
-## Grab data <a name="grab_data"></a>
+## Grab data
 This project also creates the database by grabbing the data from the crawled websites. To grab the data from the crawled websites, run the following command:
 
 #### Add sites by:
@@ -89,7 +89,7 @@ This project also creates the database by grabbing the data from the crawled web
 
     python grab_and_save_date_from_ziengs_site.py
 
-## Rest APIs <a name="rest_apis"></a>
+## Rest APIs
 
 The following REST API endpoints are available for interacting with the project's data:
     
