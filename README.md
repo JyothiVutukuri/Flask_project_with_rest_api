@@ -87,7 +87,7 @@ This project also creates the database by grabbing the data from the crawled web
 
 ### Add `ZIENGS` web site crawled data by:
 
-    python grab_and_save_date_from_ziengs_site.py
+    python grab_and_save_date_from_ziengs_site.py <crawl_input_file_path>
 
 ## Rest APIs
 
