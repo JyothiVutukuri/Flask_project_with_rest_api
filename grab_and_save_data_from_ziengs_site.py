@@ -4,14 +4,14 @@ from tqdm import tqdm
 from utils import get_soup_html_from_raw, extract_products_information, save_product_info_to_database, with_app_context
 from models import db, Site
 
-def get_product_lists_form_ziengs_site(raw_html):
+def get_product_lists_from_ziengs_site(raw_html):
     """Get product lists from raw html"""
     soup = get_soup_html_from_raw(raw_html)
     product_lists = soup.select('.productList .title')
     return list({product["title"] for product in product_lists})
 
 
-def get_product_details_form_ziengs_site(raw_html):
+def get_product_details_from_ziengs_site(raw_html):
     """Get product lists from raw html"""
     soup = get_soup_html_from_raw(raw_html)
     return {
@@ -32,8 +32,8 @@ def create_zeigns_site():
 def grab_and_save_data_from_ziengs_site(file_path):
     products_information = extract_products_information(
         file_path=file_path,
-        get_product_lists_func=get_product_lists_form_ziengs_site,
-        get_product_details_func=get_product_details_form_ziengs_site,
+        get_product_lists_func=get_product_lists_from_ziengs_site,
+        get_product_details_func=get_product_details_from_ziengs_site,
     )
     site = create_zeigns_site()
     progress_bar_for_saving_data = tqdm(total=len(products_information), desc="Saving data to database")

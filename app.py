@@ -3,7 +3,7 @@ from flask import Flask, render_template
 from flask_migrate import Migrate
 from flask_restful import Api
 
-from api_resources import SiteResource, BrandResource, ProductResource, ProductDetailResource, CategoryResource, TypeResource
+from api_resources import SiteResource, BrandResource, ProductListResource, ProductDetailResource, CategoryResource, TypeResource
 from models import db
 
 app = Flask(__name__)
@@ -23,8 +23,8 @@ api.add_resource(SiteResource, '/api/sites')
 api.add_resource(BrandResource, '/api/brands')
 api.add_resource(CategoryResource, '/api/categories')
 api.add_resource(TypeResource, '/api/product_types')
-api.add_resource(ProductResource, '/api/brands/<int:brand_id>/products')
-api.add_resource(ProductDetailResource, '/api/products/<int:product_id>')
+api.add_resource(ProductListResource, '/api/brand/<int:brand_id>/products')
+api.add_resource(ProductDetailResource, '/api/product/<int:product_id>')
 
 
 if __name__ == '__main__':

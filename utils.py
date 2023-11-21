@@ -1,4 +1,5 @@
 import html
+import re
 from functools import wraps
 
 from bs4 import BeautifulSoup
@@ -18,16 +19,25 @@ def with_app_context(func):
     return wrapper
 
 
+def replace_apostrophes_with_space(html_content):
+    # Replace occurrences of a letter followed by a single quote with the letter followed by a space
+    modified_html = re.sub(r"([a-zA-Z0-9])'([a-zA-Z0-9])", r"\1 ", html_content)
+    return modified_html
+
+
 def out_html_from_raw(raw_html):
     """Output html from raw html"""
-    normal_html = html.unescape(raw_html).replace('\\', '')
+    normal_html = html.unescape(raw_html).replace('\\', '').replace("Mini's", "Minis").replace("d'Oro", "d Oro").replace("'INCH", "INCH").replace("Don't", "Dont").replace("d'Angelo", "d Angelo").replace("W'S", "WS")
+    corrected_html = replace_apostrophes_with_space(normal_html)
     with open('output.html', 'w', encoding='utf-8') as file:
-        file.write(normal_html)
+        file.write(corrected_html)
+
 
 def get_soup_html_from_raw(raw_html):
     """Get soup html from raw html"""
     normal_html = html.unescape(raw_html).replace('\\', '')
-    return BeautifulSoup(normal_html, 'html.parser')
+    corrected_html = replace_apostrophes_with_space(normal_html)
+    return BeautifulSoup(corrected_html, 'html.parser')
 
 def read_json_lines(file_path):
     """Generator to read JSON lines from a file"""
@@ -68,15 +78,21 @@ def extract_products_information(
                     'product_type': json_obj['product_category'][1] if len(json_obj['product_category']) > 1 else None
                 })
         elif json_obj['page_type'] == 'product_detail':
-            product_info_from_detail_page_type.append(get_product_details_func(raw_html))
+            product_info = get_product_details_func(raw_html)
+            product_info_from_detail_page_type.append(product_info) if product_info else None
         else:
             raise Exception('Unknown page type')
 
-    return [
-        {**listing,
-         **next((detail for detail in product_info_from_detail_page_type if detail['name'] == listing['name']), {})}
-        for listing in product_info_from_listing_page_type
+    # Create a dictionary with 'id' as the key for each list
+    dict1 = {item['name']: item for item in product_info_from_listing_page_type}
+    dict2 = {item['name']: item for item in product_info_from_detail_page_type}
+
+    # Merge dictionaries based on the common field 'id'
+    all_product_info = [
+        {**dict1[key], **dict2[key]}
+        for key in set(dict1.keys()) & set(dict2.keys())
     ]
+    return all_product_info
 
 
 @with_app_context

@@ -87,6 +87,10 @@ This project also creates the SQlite database by grabbing the data from the craw
 
 Take a coffee break, it takes a while(around 5 minutes) to grab and save the data from the crawled websites.
 
+### Add `OMODA` website crawled data by:
+
+    python grab_and_save_data_from_omoda_site.py <omoda_crawl_input_file_path>
+
 ## Usage - Running the Project
 To run the project, run the following command:
 
@@ -115,10 +119,10 @@ Indexed product types --> http://127.0.0.1:5000/api/product_types
 
 Purpose: This endpoint offers information about different types of products.
     
-Brand related products --> http://127.0.0.1:5000/api/brands/1/products `Note: Replace 1 with the brand_id of your choice.` 
+Brand related products --> http://127.0.0.1:5000/api/brand/1/products `Note: Replace 1 with the brand_id of your choice.` 
 
 Purpose: This endpoint allows users to retrieve products associated with a specific brand using the brand_id parameter.
 
-Product detail --> http://127.0.0.1:5000/api/products/1  `Note: Replace 1 with the product_id of your choice.` 
+Product detail --> http://127.0.0.1:5000/api/product/1  `Note: Replace 1 with the product_id of your choice.` 
 
 Purpose: This endpoint provides detailed information about a specific product identified by the product_id parameter.

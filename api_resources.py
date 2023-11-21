@@ -27,7 +27,7 @@ class TypeResource(Resource):
         return jsonify({'product_types': [{'id': type.id, 'name': type.name} for type in types]})
 
 
-class ProductResource(Resource):
+class ProductListResource(Resource):
     def get(self, brand_id):
         products = Product.query.filter_by(brand_id=brand_id).all()
         return jsonify(
