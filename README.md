@@ -79,13 +79,19 @@ You can access the project via http://127.0.0.1:5000, which opens the home page 
 
 
 ## Grab data
-This project also creates the database by grabbing the data from the crawled websites. To grab the data from the crawled websites, run the following command:
+This project also creates the SQlite database by grabbing the data from the crawled websites. To grab the data from the crawled websites, run the following command:
+
+### Create database by:
+
+    flask db init
+    flask db migrate -m "initial migration""
+    flask db upgrade
 
 #### Add sites by:
 
     python add_sites.py
 
-### Add `ZIENGS` web site crawled data by:
+### Add `ZIENGS` website crawled data by:
 
     python grab_and_save_date_from_ziengs_site.py <crawl_input_file_path>
 
