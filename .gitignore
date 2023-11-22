@@ -44,3 +44,6 @@ db.sqlite3
 # generated files/ data
 *.json
 *.jl
+
+# testing
+check_output.html

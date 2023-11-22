@@ -48,7 +48,7 @@ def grab_and_save_data_from_omoda_site(file_path):
     progress_bar_for_saving_data = tqdm(total=len(products_information), desc="Saving data to database")
     for product_info in products_information:
         progress_bar_for_saving_data.update(1)  # Update the progress bar
-        save_product_info_to_database(product_info, site=site, progress_bar_info=progress_bar_for_saving_data)
+        save_product_info_to_database(product_info, site=site)
 
 
 
