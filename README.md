@@ -81,15 +81,22 @@ This project also creates the SQlite database by grabbing the data from the craw
 
     python add_sites_info.py
 
+Note: Takes a while(around 5 to 30 minutes) to grab and save the data from the crawled websites.
+
 ### Add `ZIENGS` website crawled data by:
 
     python grab_and_save_data_from_ziengs_site.py <ziengs_crawl_input_file_path>
 
-Take a coffee break, it takes a while(around 5 minutes) to grab and save the data from the crawled websites.
-
 ### Add `OMODA` website crawled data by:
 
     python grab_and_save_data_from_omoda_site.py <omoda_crawl_input_file_path>
+
+
+### Add `OMODA` website crawled data by:
+
+    python grab_and_save_data_from_zalando_site.py <grab_and_save_data_from_zalando_site>
+
+
 
 ## Usage - Running the Project
 To run the project, run the following command:

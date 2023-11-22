@@ -46,6 +46,24 @@ class ProductListResource(Resource):
         )
 
 
+class ProductListBySiteResource(Resource):
+    def get(self, site_id):
+        products = Product.query.filter_by(site_id=site_id).all()
+        return jsonify(
+            {'products': [
+                {
+                    'id': product.id,
+                    'name': product.name,
+                    'price': product.price,
+                    'page_number': product.page_number,
+                    'site': product.site.name,
+                    'brand': product.brand.name,
+                    'product_category': product.product_category.name,
+                    'product_type': product.product_type.name if product.product_type else None
+                } for product in products]
+            }
+        )
+
 class ProductDetailResource(Resource):
     def get(self, product_id):
         product = Product.query.get(product_id)
