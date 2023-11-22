@@ -107,6 +107,7 @@ You can access the project via http://127.0.0.1:5000, which opens the home page 
 
 
 ## Rest APIs
+`Note: All api endpoints are paginated with 20 items per page. To get the next page, use the  next_url available in the response.`
 
 The following REST API endpoints are available for interacting with the project's data:
     
